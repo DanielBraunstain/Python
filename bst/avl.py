@@ -1,6 +1,3 @@
-# tests are not too serious due to time constraints. done by prints and avl visualization internet tool.
-# best practices are not fully applied here due to time constraints.
-
 class AVL:
     def __init__(self,data = None):
         self.data = data

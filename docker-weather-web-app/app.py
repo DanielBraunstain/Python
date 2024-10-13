@@ -1,6 +1,3 @@
-# Title : Weather web app
-# Reviewer : Alex
-# Author : Daniel
 
 from flask import Flask, request, render_template #create the app, get user input, communicate to html
 from data_processing import process_forecast_data, get_weather_data #proccess data from user and weather server

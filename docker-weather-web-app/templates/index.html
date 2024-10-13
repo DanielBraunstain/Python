@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+
+<h1 style="text-align:center">Weather Forecast for {{ location }} {{ country }}</h1>
+
+<form style="text-align:center" method="POST">
+    <label>Enter Location:</label>
+    <input type="text" name="location">
+    <button type="submit">GO!</button>
+</form>
+
+<html lang="en">
+<head>
+  <title>Weather Forecast for {{ location }} {{ country }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style = "background-color:#c5eae9">
+
+<div class="container">
+  {% if daily_summaries %}
+  <p style="text-align:center">5 Days Forecast:</p>
+  <table style="text-align:center" class="table">
+    <thead>
+    <tr>
+      <th style="text-align:center">Date</th>
+      <th style="text-align:center">Morning Temperature</th>
+      <th style="text-align:center">Morning Humidity</th>
+      <th style="text-align:center">Evening Temperature</th>
+      <th style="text-align:center">Evening Humidity</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for summary in daily_summaries %}
+    <tr>
+      <td>{{ summary.date }}</td>
+      <td>{% if summary.temp_mor is not none %}{{ summary.temp_mor}}°C{% else %}N/A{% endif %}</td>
+      <td>{% if summary.humidity_mor is not none %}{{ summary.humidity_mor }}%{% else %}N/A{% endif %}</td>
+      <td>{% if summary.temp_eve is not none %}{{ summary.temp_eve}}°C{% else %}N/A{% endif %}</td>
+      <td>{% if summary.humidity_eve is not none %}{{ summary.humidity_eve}}%{% else %}N/A{% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  {{error_data}}
+  {% endif %}
+</div>
+<div class="container">
+</div>
+
+</body>
+</html>
